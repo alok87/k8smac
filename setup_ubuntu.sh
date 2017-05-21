@@ -68,4 +68,7 @@ install_go_packages
 
 chown ubuntu.ubuntu /Users
 
-
+# Setup docker to run as root
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
