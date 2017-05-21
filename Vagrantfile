@@ -37,7 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |c|
   c.vm.define vm_name = "k8s-env" do |config|
     config.vm.hostname = vm_name
 
-    config.vm.box = "bento/centos-7.2"
+    config.vm.box = "ubuntu/xenial64"
+    #config.vm.box = "bento/centos-7.2"
 
     ip = "10.1.2.3"
     config.vm.network "private_network", ip: ip
@@ -58,7 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |c|
       vb.cpus = $vb_cpus
     end
 
-    config.vm.provision "shell", inline: "HOST_GOPATH=#{$gopath} GUEST_IP=#{ip} /vagrant/setup.sh"
+    config.vm.provision "shell", inline: "HOST_GOPATH=#{$gopath} GUEST_IP=#{ip} /vagrant/setup_ubuntu.sh"
   end
 end
 
